@@ -7,7 +7,7 @@ var ContactoModel = Backbone.Model.extend({
      * @field
      */
     defaults: {
-    	"id" : "",
+    	"id" : null,
         "nombre": "",
         "apellido": "",
         "alias"   : "",
@@ -15,5 +15,5 @@ var ContactoModel = Backbone.Model.extend({
         "email"    : "",
         "direccion" : "",
         "fechaCreacion" : ""
-    }
-});
+    } 
+},{"sequence" : 0});

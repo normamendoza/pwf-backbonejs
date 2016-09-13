@@ -2,21 +2,22 @@
 <div class="panel panel-default">
     <div class="panel-heading">Listado de contactos</div>
     <div class="panel-body">
-        <table class="table table-striped" id="contactTable">
+<div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped" id="contactTable">
             <thead>
                 <tr>
-                    <th><input type="text" class="form-control"></th>
-                    <th><input type="text" class="form-control"></th>
-                    <th><input type="text" class="form-control"></th>
-                    <th><input type="text" class="form-control"></th>
-                    <th><input type="text" class="form-control"></th>
-                    <th><input type="text" class="form-control"></th>
-                    <th><input type="text" class="form-control"></th>
-                    <th><input type="text" class="form-control"></th>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td></td>
                 </tr>
-            </thead>
-            <thead>
                 <tr>
+                    <th>Numero Contacto</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Alias</th>
@@ -30,6 +31,9 @@
             <tbody>
                 <% _.forEach(collection, function(item){ %>
                     <tr>
+                        <td>
+                            <%=item.id %>
+                        </td>
                         <td>
                             <%=item.nombre %>
                         </td>
@@ -67,7 +71,7 @@
 
             var table = $('#contactTable').DataTable();
 
-            $("#contactTable thead input").on( 'keyup change', function () {
+            $("#contactTable thead td input").on( 'keyup change', function () {
                  table
                 .column( $(this).parent().index()+':visible' )
                 .search( this.value )
@@ -76,5 +80,6 @@
         });
 
     </script>
+    </div>
 </div>
 <!-- Fin templates/lista-persona-tmpl -->

@@ -15,6 +15,7 @@ var FormularioContactoView = Backbone.View.extend({
      */
     events: {
         "click #guardar": "guardar",
+        "click #borrar": "borrar",
     },
 
     /**
@@ -22,7 +23,6 @@ var FormularioContactoView = Backbone.View.extend({
      */
     initialize: function (options) {
         this.data = options.data;
-        console.log(options.data.toJSON().nombre);
         var thiz = this;
         this.loadTemplate(function () {
             thiz.render();
@@ -54,6 +54,8 @@ var FormularioContactoView = Backbone.View.extend({
         if (id == null){
             data["fechaCreacion"] = new Date();
             var model = new ContactoModel(data);
+            model.set({id:model.constructor.sequence});
+            model.constructor.sequence++;
             this.collection.add(model);
         }else {
             model = this.collection.get(id);
@@ -61,5 +63,12 @@ var FormularioContactoView = Backbone.View.extend({
             this.collection.trigger("change");
         }
 
+    },
+    borrar: function () {
+        var id = this.$el.find("#id").val();
+        model = this.collection.get(id);
+        this.collection.remove(model);
+        this.data = new ContactoModel();
+        this.render();
     }
 });
